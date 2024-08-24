@@ -581,14 +581,13 @@ label {
   -webkit-transition: opacity 0.5s ease-in-out;
   -ms-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
-  top: 4em;
   bottom: 4em;
   color: rgba(255, 255, 255, 0.5);
   left: 4em;
   opacity: 0.5;
   position: absolute; }
   #footer .icons {
-    margin: 2em 0 0.5em 0; }
+    margin: 0 0 0.5em 0; }
   #footer .copyright {
     font-size: 0.8em;
     list-style: none;
@@ -615,17 +614,14 @@ label {
       left: 3.5em; } }
   @media screen and (max-width: 736px) {
     #footer {
-      top: 2em;
       bottom: 2em;
       left: 2em; } }
   @media screen and (max-width: 360px) {
     #footer {
-      top: 2em;
       bottom: 1.25em;
       left: 1.25em; } }
   @media screen and (max-height: 640px) {
     #footer {
-      top: 2em;
       bottom: auto;
       left: auto;
       margin: 1em 0 0 0;
