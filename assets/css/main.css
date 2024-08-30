@@ -258,11 +258,12 @@ a {
   transition: border-bottom-color 0.2s ease, color 0.2s ease;
   border-bottom: dotted 1px rgba(255, 255, 255, 0.25);
   color: #1cb495;
+  display: inline-block;
   text-decoration: none; }
   a:hover {
     border-bottom-color: transparent;
     color: #1cb495 !important;
-    text-decoration: none; }
+    text-decoration: none;}
 
 strong, b {
   color: #fff;
