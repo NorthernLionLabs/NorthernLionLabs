@@ -50,16 +50,6 @@ mark {
   background-color: transparent;
   color: inherit; }
 
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0; }
-
-input, select, textarea {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -ms-appearance: none;
-  appearance: none; }
-
 body {
   -ms-overflow-style: scrollbar; }
 
@@ -442,8 +432,6 @@ ul.icons {
 
 
 /* Button */
-input[type="submit"],
-input[type="reset"],
 input[type="button"],
 button,
 .button {
