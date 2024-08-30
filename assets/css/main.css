@@ -60,10 +60,6 @@ input, select, textarea {
   -ms-appearance: none;
   appearance: none; }
 
-/* Basic */
-@-ms-viewport {
-  width: device-width; }
-
 body {
   -ms-overflow-style: scrollbar; }
 
