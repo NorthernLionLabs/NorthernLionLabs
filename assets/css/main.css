@@ -863,3 +863,14 @@ button,
       left: auto;
       margin: 1em 0 0 0;
       position: relative; } }
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 768px) {
+  .button {
+    padding: 10px 15px;
+    font-size: 14px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
