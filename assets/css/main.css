@@ -867,7 +867,7 @@ button,
 /* Mobile-specific adjustments */
 @media screen and (max-width: 768px) {
   .button {
-    padding: 10px 15px;
+    padding: 2px 15px;
     font-size: 14px;
     max-width: 100%;
     overflow: hidden;
