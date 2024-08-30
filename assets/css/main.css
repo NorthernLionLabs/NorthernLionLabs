@@ -272,14 +272,12 @@ strong, b {
  .button {
    border: none;
    color: #1cb495;
-   padding: 15px 32px;
+   padding: 15px 38px;
    text-align: center;
    text-decoration: none;
    display: inline-block;
    font-size: 16px;
    margin: 4px 2px;
-   padding-right: 4px;
-   padding-left: 4px;
    cursor: pointer;
  }
 
