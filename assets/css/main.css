@@ -607,7 +607,7 @@ button,
   input[type="button"]:hover,
   button:hover,
   .button:hover {
-    background-color: #ffffff; }
+    background-color: #cccccc; }
   input[type="submit"]:active,
   input[type="reset"]:active,
   input[type="button"]:active,
@@ -673,7 +673,7 @@ button,
     list-style: none;
     padding: 0; }
     #footer .copyright li {
-      border-left: solid 1px rgba(255, 255, 255, 0.25);
+      border-left: solid 1px rgb(234, 234, 234);
       display: inline-block;
       line-height: 1em;
       margin: 0 0 0 0.75em;
