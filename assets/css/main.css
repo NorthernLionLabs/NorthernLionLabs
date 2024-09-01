@@ -257,7 +257,7 @@ a {
   -ms-transition: border-bottom-color 0.2s ease, color 0.2s ease;
   transition: border-bottom-color 0.2s ease, color 0.2s ease;
   border-bottom: dotted 1px rgba(255, 255, 255, 0.25);
-  color: #1cb495;
+  color: #ffffff;
   display: inline-block;
   text-decoration: none; }
   a:hover {
@@ -271,7 +271,7 @@ strong, b {
 
  .button {
    border: none;
-   color: #1cb495;
+   color: #ffffff;
    padding: 15px 32px;
    text-align: center;
    text-decoration: none;
