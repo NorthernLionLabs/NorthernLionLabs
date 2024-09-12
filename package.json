@@ -1,15 +1,70 @@
 {
-  "name": "NorthernLionLabs",
+  "name": "nll-js--react-scripts",
+  "author": "northern lion labs",
+  "email": "info@northernlion.io",
+  "version": "3.0.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "react-scripts start",
+    "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
+    "prettier:fix": "prettier './src/**/*.js' --write",
+    "eslint:fix": "eslint ./src --fix",
+    "clear-all": "rimraf ./build ./node_modules",
+    "sam:local": "sam local start-api",
+    "sam:build": "sam build",
+    "sam:deploy": "sam deploy --guided",
+    "build:staging": "REACT_APP_ENV=staging REACT_APP_API_URL=https://4hrz281am4.execute-api.us-east-1.amazonaws.com/Prod/ react-scripts build",
+    "build:production": "REACT_APP_ENV=production REACT_APP_API_URL=https://9kf466hnd2.execute-api.us-east-1.amazonaws.com/Prod/ react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.645.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.5",
+    "aos": "^2.3.4",
+    "dotenv": "^16.4.5",
+    "express-validator": "^7.2.0",
+    "formik": "^2.2.9",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-countup": "^6.3.1",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.0",
+    "react-scripts": "^5.0.1",
+    "react-slick": "^0.29.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "react-visibility-sensor": "^5.1.1",
+    "slick-carousel": "^1.8.1",
+    "web-vitals": "^3.0.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
-    "prettier": "^3.3.1",
-    "vite": "^5.1.6"
-  }
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-syntax-flow": "^7.14.5",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.23.1",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "yarn-upgrade-all": "^0.7.1"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
