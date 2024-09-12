@@ -1,8 +1,0 @@
-version = 0.1
-[default.deploy.parameters]
-stack_name = "northernlion-api-staging"
-s3_bucket = "northernlion-sam-templates-staging"
-region = "us-east-1"
-confirm_changeset = true
-capabilities = "CAPABILITY_IAM"
-parameter_overrides = "Environment=staging"
