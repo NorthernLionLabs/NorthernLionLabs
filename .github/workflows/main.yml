@@ -3,8 +3,12 @@ name: Deploy SAM Application and React Frontend
 on:
   push:
     branches:
-      - main
       - develop
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -48,7 +52,7 @@ jobs:
           aws cloudfront create-invalidation --distribution-id ${{ secrets.STAGING_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
 
   deploy-production:
-    if: github.ref == 'refs/heads/main'
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
