@@ -1,0 +1,99 @@
+name: Deploy SAM Application and React Frontend
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
+
+jobs:
+  deploy-staging:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: aws-actions/setup-sam@v1
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      # Deploy backend
+      - run: sam build
+      - run: sam deploy --config-file samconfig-staging.toml
+
+      # Get API URL from SAM output
+      - name: Get API URL
+        id: get-api-url
+        run: |
+          API_URL=$(aws cloudformation describe-stacks --stack-name northernlion-api-staging --query "Stacks[0].Outputs[?OutputKey=='ApiUrl'].OutputValue" --output text)
+          echo "::set-output name=api_url::$API_URL"
+
+      # Build and deploy frontend
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build React App
+        env:
+          REACT_APP_API_URL: ${{ steps.get-api-url.outputs.api_url }}
+          REACT_APP_ENV: staging
+        run: yarn build
+      - name: Deploy to S3
+        run: |
+          aws s3 sync build/ s3://staging.northernlion.io --delete
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.STAGING_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
+
+  deploy-production:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: aws-actions/setup-sam@v1
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      # Deploy backend
+      - run: sam build
+      - run: sam deploy --config-file samconfig-prod.toml
+
+      - name: Await Manual Approval
+        uses: trstringer/manual-approval@v1
+        with:
+          secret: ${{ github.TOKEN }}
+          approvers: madeinph1l@
+          minimum-approvals: 1
+          issue-title: "Approve deployment to production"
+          issue-body: "Please review and approve the deployment to production."
+          exclude-workflow-initiator-as-approver: false
+          additional-approved-words: ''
+          additional-denied-words: ''
+
+      # Get API URL from SAM output
+      - name: Get API URL
+        id: get-api-url
+        run: |
+          API_URL=$(aws cloudformation describe-stacks --stack-name northernlion-api-production --query "Stacks[0].Outputs[?OutputKey=='ApiUrl'].OutputValue" --output text)
+          echo "::set-output name=api_url::$API_URL"
+
+      # Build and deploy frontend
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build React App
+        env:
+          REACT_APP_API_URL: ${{ steps.get-api-url.outputs.api_url }}
+          REACT_APP_ENV: production
+        run: yarn build
+      - name: Deploy to S3
+        run: |
+          aws s3 sync build/ s3://northernlion.io --delete
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.PRODUCTION_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"

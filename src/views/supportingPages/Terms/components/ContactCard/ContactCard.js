@@ -37,7 +37,7 @@ const ContactCard = () => {
             marginBottom: 2,
           }}
         >
-          If you have any questions or concerns about our Terms of Service policy, please
+          If you have any questions or concerns about our Privacy policy, please
           contact us.
         </Typography>
         <Typography variant={'subtitle2'}>

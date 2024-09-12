@@ -6,9 +6,9 @@ export const light = {
   cardShadow: 'rgba(23, 70, 161, .11)',
   mode: 'light',
   primary: {
-    main: '#4af8b9', // Turquoise
-    light: '#4af8b9',  // Light Turquoise
-    dark: '#8dfdd6',
+    main: '#00FFFF', // Turquoise
+    light: '#20f3f4',  // Light Turquoise
+    dark: '#11e1e3',
     contrastText: '#000945', // Navy Blue
   },
   secondary: {
@@ -42,16 +42,16 @@ export const dark = {
   },
   mode: 'dark',
   primary: {
-    main: '#10ffa8', // Navy Blue
-    light: '#10ffa8',
-    dark: '#8dfdd6',
-    contrastText: '#000022',
+    main: '#00FFFF', // Navy Blue
+    light: '#20f3f4',
+    dark: '#11e1e3',
+    contrastText: '#000945',
   },
   secondary: {
     light: '#1c2536', // Light Turquoise
-    main: '#10ffa8', // Turquoise
-    dark: '#10ffa8', // Dark Turquoise
-    contrastText: '#10ffa8', // Navy Blue for contrast
+    main: '#00FFFF', // Turquoise
+    dark: '#11e1e3', // Dark Turquoise
+    contrastText: '#000945', // Navy Blue for contrast
   },
   text: {
     primary: '#ffffff',

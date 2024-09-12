@@ -1,0 +1,149 @@
+#AWSTemplateFormatVersion: '2010-09-09'
+#Transform: AWS::Serverless-2016-10-31
+#Description: NorthernLion API
+#
+#Parameters:
+#  Environment:
+#    Type: String
+#    Default: local
+#    AllowedValues:
+#      - local
+#      - staging
+#      - prod
+#
+#Conditions:
+#  IsLocal: !Equals [!Ref Environment, local]
+#  IsProduction: !Equals [!Ref Environment, prod]
+#
+#Globals:
+#  Function:
+#    Timeout: 30
+#    Runtime: nodejs16.x
+#
+#Resources:
+#  NorthernLionApi:
+#    Type: AWS::Serverless::Api
+#    Properties:
+#      StageName: !Ref Environment
+#      Cors:
+#        AllowMethods: "'GET,POST,OPTIONS'"
+#        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+#        AllowOrigin: "'*'"
+#
+#  SendEmailFunction:
+#    Type: AWS::Serverless::Function
+#    Properties:
+#      FunctionName: !Sub "send-email-${Environment}"
+#      CodeUri: backend/functions/api/
+#      Handler: app.handler
+#      Policies:
+#        - SESCrudPolicy:
+#            IdentityName: info@northernlion.io
+#      Environment:
+#        Variables:
+#          ENVIRONMENT: !Ref Environment
+#      Events:
+#        SendEmail:
+#          Type: Api
+#          Properties:
+#            RestApiId: !Ref NorthernLionApi
+#            Path: /api/send-email
+#            Method: POST
+#
+#  ApiCloudfrontDistribution:
+#    Type: AWS::CloudFront::Distribution
+#    Condition: !Not [!Condition IsLocal]
+#    Properties:
+#      DistributionConfig:
+#        DefaultCacheBehavior:
+#          ViewerProtocolPolicy: https-only
+#          TargetOriginId: ApiGateway
+#          DefaultTTL: 0
+#          MinTTL: 0
+#          MaxTTL: 0
+#          ForwardedValues:
+#            QueryString: true
+#            Headers:
+#              - Authorization
+#        Enabled: true
+#        HttpVersion: http2
+#        Origins:
+#          - DomainName: !Sub "${NorthernLionApi}.execute-api.${AWS::Region}.amazonaws.com"
+#            Id: ApiGateway
+#            CustomOriginConfig:
+#              HTTPPort: 80
+#              HTTPSPort: 443
+#              OriginProtocolPolicy: https-only
+#        PriceClass: PriceClass_100
+#
+#Outputs:
+#  ApiCloudFrontDomainName:
+#    Description: "API CloudFront Domain Name"
+#    Value: !GetAtt ApiCloudfrontDistribution.DomainName
+#    Condition: !Not [!Condition IsLocal]
+#
+#  ApiUrl:
+#    Description: "API Gateway endpoint URL"
+#    Value: !Sub "https://${NorthernLionApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/"
+#
+#  SendEmailApi:
+#    Description: "Send Email API endpoint"
+#    Value: !Sub "https://${NorthernLionApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/api/send-email"
+
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: NorthernLion API
+
+Parameters:
+  Environment:
+    Type: String
+    Default: local
+    AllowedValues:
+      - local
+      - staging
+      - prod
+
+Globals:
+  Function:
+    Timeout: 30
+    Runtime: nodejs16.x
+
+Resources:
+  NorthernLionApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref Environment
+      Cors:
+        AllowMethods: "'GET,POST,OPTIONS'"
+        AllowHeaders: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+        AllowOrigin: "'*'"
+
+  SendEmailFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "send-email-${Environment}"
+      CodeUri: backend/functions/api/
+      Handler: app.handler
+      Policies:
+        - SESCrudPolicy:
+            IdentityName: info@northernlion.io
+      Environment:
+        Variables:
+          ENVIRONMENT: !Ref Environment
+      Events:
+        SendEmail:
+          Type: Api
+          Properties:
+            RestApiId: !Ref NorthernLionApi
+            Path: /api/send-email
+            Method: POST
+
+Outputs:
+  ApiUrl:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${NorthernLionApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/"
+
+  SendEmailApi:
+    Description: "Send Email API endpoint"
+    Value: !Sub "https://${NorthernLionApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/api/send-email"

@@ -12,7 +12,7 @@ const CtaSection = () => (
   >
     <Box>
       <Typography fontWeight={700} variant={'h6'} gutterBottom>
-        Coming soon: An advanced financial API by Northern Lion Labs.
+        Coming soon - An advanced financial API by Northern Lion Labs.
       </Typography>
       <Typography>Sign up to get early access and updates tailored for investors.</Typography>
     </Box>

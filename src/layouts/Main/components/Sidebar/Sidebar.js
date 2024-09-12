@@ -16,8 +16,8 @@ const Sidebar = (props) => {
   const sidebarColors = {
     background: '#1c2536',
     text: '#ffffff',
-    activeLink: '#10ffa8',
-    hoverLink: '#8dfdd6'
+    activeLink: '#00FFFF',
+    hoverLink: '#11e1e3'
   };
 
   return (

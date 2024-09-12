@@ -4,14 +4,17 @@
   "email": "info@northernlion.io",
   "version": "3.0.0",
   "private": true,
-  "proxy": "http://localhost:3001",
   "scripts": {
     "start": "react-scripts start",
     "build": "cross-env GENERATE_SOURCEMAP=false react-scripts build",
     "prettier:fix": "prettier './src/**/*.js' --write",
     "eslint:fix": "eslint ./src --fix",
     "clear-all": "rimraf ./build ./node_modules",
-    "dev": "nodemon --legacy-watch backend/server.js"
+    "sam:local": "sam local start-api",
+    "sam:build": "sam build",
+    "sam:deploy": "sam deploy --guided",
+    "build:staging": "REACT_APP_ENV=staging REACT_APP_API_URL=https://4hrz281am4.execute-api.us-east-1.amazonaws.com/Prod/ react-scripts build",
+    "build:production": "REACT_APP_ENV=production REACT_APP_API_URL=https://9kf466hnd2.execute-api.us-east-1.amazonaws.com/Prod/ react-scripts build"
   },
   "eslintConfig": {
     "extends": [

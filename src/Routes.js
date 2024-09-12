@@ -80,17 +80,17 @@ const Routes = () => {
           />
         ))()}
       />
-      <Route
-        exact
-        path="/page-about"
-        element={((matchProps) => (
-          <WithLayout
-            {...matchProps}
-            component={AboutView}
-            layout={MainLayout}
-          />
-        ))()}
-      />
+      {/*<Route*/}
+      {/*  exact*/}
+      {/*  path="/page-about"*/}
+      {/*  element={((matchProps) => (*/}
+      {/*    <WithLayout*/}
+      {/*      {...matchProps}*/}
+      {/*      component={AboutView}*/}
+      {/*      layout={MainLayout}*/}
+      {/*    />*/}
+      {/*  ))()}*/}
+      {/*/>*/}
       {/*<Route*/}
       {/*  exact*/}
       {/*  path="/page-services"*/}
@@ -102,17 +102,17 @@ const Routes = () => {
       {/*    />*/}
       {/*  ))()}*/}
       {/*/>*/}
-      <Route
-        exact
-        path="/page-contact"
-        element={((matchProps) => (
-          <WithLayout
-            {...matchProps}
-            component={ContactView}
-            layout={MainLayout}
-          />
-        ))()}
-      />
+      {/*<Route*/}
+      {/*  exact*/}
+      {/*  path="/page-contact"*/}
+      {/*  element={((matchProps) => (*/}
+      {/*    <WithLayout*/}
+      {/*      {...matchProps}*/}
+      {/*      component={ContactView}*/}
+      {/*      layout={MainLayout}*/}
+      {/*    />*/}
+      {/*  ))()}*/}
+      {/*/>*/}
       {/*<Route*/}
       {/*  exact*/}
       {/*  path="/page-pricing"*/}
@@ -166,33 +166,11 @@ const Routes = () => {
       />
       {/*<Route*/}
       {/*  exact*/}
-      {/*  path="/page-coming-soon"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={ComingSoonView}*/}
-      {/*      layout={MainLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
       {/*  path="/page-maintenance-mode"*/}
       {/*  element={((matchProps) => (*/}
       {/*    <WithLayout*/}
       {/*      {...matchProps}*/}
       {/*      component={MaintenanceModeView}*/}
-      {/*      layout={MainLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/page-cover"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={CoverView}*/}
       {/*      layout={MainLayout}*/}
       {/*    />*/}
       {/*  ))()}*/}
@@ -263,147 +241,26 @@ const Routes = () => {
       {/*    />*/}
       {/*  ))()}*/}
       {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-introduction"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={IntroductionView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-quick-start"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={QuickStartView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-typography"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={TypographyComponentView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-shadows"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={ShadowsView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-container"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={ContainerComponentView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-layouts"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={LayoutsView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-plugins"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={PluginsView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-icons"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={IconsView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-illustrations"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={IllustrationsView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-support"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={SupportView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/docs-change-log"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={ChangeLogView}*/}
-      {/*      layout={FixedLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  exact*/}
-      {/*  path="/page-not-found"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={NotFoundView}*/}
-      {/*      layout={MainLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
-      {/*/>*/}
-      {/*<Route*/}
-      {/*  path="*"*/}
-      {/*  element={((matchProps) => (*/}
-      {/*    <WithLayout*/}
-      {/*      {...matchProps}*/}
-      {/*      component={NotFoundView}*/}
-      {/*      layout={MainLayout}*/}
-      {/*    />*/}
-      {/*  ))()}*/}
+      <Route
+        exact
+        path="/page-not-found"
+        element={((matchProps) => (
+          <WithLayout
+            {...matchProps}
+            component={NotFoundView}
+            layout={MainLayout}
+          />
+        ))()}
+      />
+      <Route
+        path="*"
+        element={((matchProps) => (
+          <WithLayout
+            {...matchProps}
+            component={NotFoundView}
+            layout={MainLayout}
+          />
+        ))()}
       />
     </ReactRoutes>
   );

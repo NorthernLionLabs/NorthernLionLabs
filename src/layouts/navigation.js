@@ -7,18 +7,10 @@ export const pages = [
         title: 'Home',
         href: '/',
       },
-      {
-        title: 'About',
-        href: '/page-about',
-      },
       // {
       //   title: 'Services',
       //   href: '/page-services',
       // },
-      {
-        title: 'Contact',
-        href: '/page-contact',
-      },
       {
         title: 'Terms of Service',
         href: '/terms-of-service',

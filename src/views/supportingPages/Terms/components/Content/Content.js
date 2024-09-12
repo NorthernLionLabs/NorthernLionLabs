@@ -37,7 +37,7 @@ const Content = () => {
     {
       title: '2. Use License',
       description:
-        'Permission is granted to temporarily download one copy of the materials (information or software) on Northern Lion Labs llc\'s website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:\n' +
+        'Upon purchase of an API license when available, permission in line with the terms of the license purchased is granted to temporarily access the materials (information or software) on Northern Lion Labs llc\'s website, and the websites the company controls, for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:\n' +
         '\n' +
         'modify or copy the materials;\n' +
         'use the materials for any commercial purpose, or for any public display (commercial or non-commercial);\n' +

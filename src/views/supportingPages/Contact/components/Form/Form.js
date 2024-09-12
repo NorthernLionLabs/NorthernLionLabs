@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Form = () => {
   const theme = useTheme();
@@ -35,7 +36,7 @@ const Form = () => {
     if (!formData.lastName.trim()) tempErrors.lastName = "Last name is required";
     if (!formData.email.trim()) {
       tempErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!isValidEmail(formData.email)) {
       tempErrors.email = "Email is invalid";
     }
     if (!formData.message.trim()) {
@@ -47,18 +48,19 @@ const Form = () => {
     return Object.keys(tempErrors).length === 0;
   };
 
+  const isValidEmail = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prevData => ({
       ...prevData,
-      [name]: value,
+      [name]: value
     }));
-    // Clear the error for this field as the user types
     if (errors[name]) {
-      setErrors(prevErrors => ({
-        ...prevErrors,
-        [name]: null
-      }));
+      setErrors(prevErrors => ({ ...prevErrors, [name]: null }));
     }
   };
 
@@ -69,9 +71,7 @@ const Form = () => {
       setSubmitError('');
 
       try {
-        console.log('Sending data:', formData);
-        // Use a default value if REACT_APP_API_URL is undefined
-        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+        const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3000';
         const response = await fetch(`${apiUrl}/api/send-email`, {
           method: 'POST',
           headers: {
@@ -83,7 +83,7 @@ const Form = () => {
         const responseData = await response.json();
 
         if (!response.ok) {
-          throw new Error(responseData.error || response.statusText);
+          throw new Error(responseData.message || response.statusText);
         }
 
         setSubmitSuccess(true);
@@ -206,6 +206,7 @@ const Form = () => {
                 fullWidth
                 type="submit"
                 disabled={isSubmitting}
+                startIcon={isSubmitting ? <CircularProgress size={20} color="inherit" /> : null}
               >
                 {isSubmitting ? 'Submitting...' : 'Submit'}
               </Button>

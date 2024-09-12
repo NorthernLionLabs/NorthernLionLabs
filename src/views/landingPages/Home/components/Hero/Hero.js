@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Rocket from "../../../../../svg/illustrations/Rocket";
+import Form from "../Form";
 
 const Hero = () => {
   const theme = useTheme();
@@ -18,7 +17,7 @@ const Hero = () => {
     <Grid container spacing={4}>
       <Grid item xs={12} md={6}>
         <Box data-aos={isMd ? 'fade-right' : 'fade-up'}>
-          <Box marginBottom={2}>
+          <Box marginBottom={4}>
             <Typography
               variant="h2"
               component={'h2'}
@@ -26,7 +25,7 @@ const Hero = () => {
                 fontWeight: 700,
               }}
             >
-              The ideal
+              An advanced
             </Typography>
             <Typography
               variant="h2"
@@ -34,14 +33,18 @@ const Hero = () => {
                 fontWeight: 700,
               }}
             >
-              financial API for investors.
+              financial modeling API for investors
             </Typography>
           </Box>
-          <Box marginBottom={3}>
-            <Typography variant="h6" component="p" color="textSecondary">
+          <Box marginBottom={2}>
+            <Typography variant="h6" component="p" color="textSecondary" margin="2">
               We're building something amazing for investors —
-              advanced stock market data APIs for professional financial modeling. Sign up to
-              be notified when we launch in early 2025.
+              smart stock market data APIs for professional financial modeling.
+            </Typography>
+          </Box>
+          <Box marginBottom={4}>
+          <Typography variant="h6" component="p" color="textSecondary" marginBottom="40">
+              Sign up to be notified when we launch in early 2025.
             </Typography>
           </Box>
           <Box
@@ -59,26 +62,26 @@ const Hero = () => {
             {/*>*/}
             {/*  Contact us*/}
             {/*</Box>*/}
-            <Box
-              component={RouterLink}
-              to="/page-contact"
-              style={{ textDecoration: 'none' }}
-            >
-              <Button
-                variant="contained"
-                color="primary"
-                size="large"
-                fullWidth={!isMd}
-                sx={{
-                  marginTop: { xs: 1, sm: 0 },
-                  marginLeft: { sm: 0 },
-                }}
-              >
-                Sign up
-              </Button>
+            {/*<Box*/}
+            {/*  component={RouterLink}*/}
+            {/*  to="/page-contact"*/}
+            {/*  style={{ textDecoration: 'none' }}*/}
+            {/*>*/}
+            {/*  <Button*/}
+            {/*    variant="contained"*/}
+            {/*    color="primary"*/}
+            {/*    size="large"*/}
+            {/*    fullWidth={!isMd}*/}
+            {/*    sx={{*/}
+            {/*      marginTop: { xs: 1, sm: 0 },*/}
+            {/*      marginLeft: { sm: 0 },*/}
+            {/*    }}*/}
+            {/*  >*/}
+            {/*    Sign up*/}
+            {/*  </Button>*/}
+            <Form />
             </Box>
           </Box>
-        </Box>
       </Grid>
       <Grid item xs={12} md={6}>
         <Box
