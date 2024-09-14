@@ -1,7 +1,25 @@
 # Dependencies
 
-/.pnp
-.pnp.js
+
+# Testing
+/coverage
+
+
+# Misc
+.DS_Store
+.env.production
+.env.staging
+
+build
+node_modules
+.yarn
+.github
+.aws-sam
+
+
+# Docker
+docker-compose.override.yml
+
 
 # Testing
 /coverage
@@ -16,19 +34,11 @@
 !.yarn/sdks
 !.yarn/versions
 
+
 #!.yarn/cache
 .pnp.*
+node_modules/
 
-# Misc
-.DS_Store
-.env.production
-.env.staging
-
-build
-node_modules
-.yarn
-.github
-.aws-sam
 
 
 npm-debug.log*
@@ -42,6 +52,7 @@ yarn-error.log*
 *.swo
 
 # OS generated files
+
 .DS_Store?
 ._*
 .Spotlight-V100
@@ -50,7 +61,7 @@ ehthumbs.db
 Thumbs.db
 
 # Docker
-docker-compose.override.yml
+docker-compose.yml
 
 # Logs
 logs
@@ -61,6 +72,7 @@ pids
 *.pid
 *.seed
 *.pid.lock
+
 
 
 /backend/.env
