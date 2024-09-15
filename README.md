@@ -1,3 +1,4 @@
+
 # Northern Lion Labs
 
 Official website of Northern Lion Labs llc.
@@ -16,5 +17,6 @@ Official website of Northern Lion Labs llc.
 
 ## MUI Documentation
 
-The full documentation for the React Material Kit can be found [here](https://next.material-ui.com?ref=maccarian-agency).
+The full documentation for the React Material Kit can be found [here](https://next.material-ui.com).
+
 
